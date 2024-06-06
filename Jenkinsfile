@@ -44,6 +44,16 @@ pipeline{
                   sh 'mvn package'
               }
           }
+	  stage ('core-services docker build') {
+            steps {
+                 sh '''
+                  #!/bin/bash
+                  docker build -t dockerfile .
+                  docker tag dockerfile 7720001490/studentapp:chatbot1
+                  '''  
+        } 
+    }
+
 	     
           
       }
